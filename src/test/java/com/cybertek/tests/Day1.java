@@ -113,6 +113,22 @@ public class Day1 {
 
         Thread.sleep(5000);
 
+        MobileElement you = driver.findElement(MobileBy.AccessibilityId("You tab, 4 of 5"));
+        you.click();
+        Thread.sleep(2000);
+
+        MobileElement settings = driver.findElement(By.xpath("//*[@text='Settings']"));
+        settings.click();
+        Thread.sleep(2000);
+
+        MobileElement checkbox = driver.findElement(By.id("com.etsy.android:id/settings_checkbox"));
+        checkbox.click();
+        Thread.sleep(3000);
+
+        //verify after click the checkbox it is not selected
+        Assert.assertFalse(driver.findElement(By.id("com.etsy.android:id/settings_checkbox")).isSelected());
+        Thread.sleep(1000);
+
 
 
         driver.closeApp();
