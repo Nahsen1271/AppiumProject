@@ -1,9 +1,13 @@
 package com.cybertek.tests;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
+import org.junit.Assert;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -33,6 +37,7 @@ public class Day1 {
 
         // Set your application's MainActivity i.e. the LAUNCHER activity name.
         desiredCapabilities.setCapability("appActivity", "com.android.calculator2.Calculator");
+        desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME,"UiAutomator2");
         /*"http://localhost:4723/wd/hub" --> address of the appium server. If you have appium server on the same computer
         just use local host
         4723-->default port number
@@ -42,6 +47,25 @@ public class Day1 {
         driver = new AppiumDriver<>(new URL("http://localhost:4723/wd/hub"),desiredCapabilities);
 
         Thread.sleep(3000);
+
+        //TEST 2+2 is returing 4
+        MobileElement digit2 = driver.findElement(By.id("com.android.calculator2:id/digit_2"));
+        //mobileBy child class of by
+        MobileElement plus = driver.findElement(MobileBy.AccessibilityId("plus"));
+        MobileElement equals = driver.findElement(MobileBy.AccessibilityId("equals"));
+        MobileElement result = driver.findElement(By.id("com.android.calculator2:id/result"));
+
+        digit2.click();
+        plus.click();
+        digit2.click();
+        equals.click();
+
+        //get the text of mobile element of result
+        String resultText = result.getText();
+
+        Assert.assertEquals(resultText,"4");
+        Thread.sleep(2000);
+
 
 
         //close the app at the end
