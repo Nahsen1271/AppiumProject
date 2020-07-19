@@ -66,6 +66,20 @@ public class Day1 {
         Assert.assertEquals(resultText,"4");
         Thread.sleep(2000);
 
+        //verify 4 * 5 = 20
+        MobileElement digit4 = driver.findElement(By.id("com.android.calculator2:id/digit_4"));
+        MobileElement digit5 = driver.findElement(By.id("com.android.calculator2:id/digit_5"));
+        MobileElement multipy = driver.findElementByAccessibilityId("multiply");
+
+        digit4.click();
+        multipy.click();
+        digit5.click();
+        equals.click();
+
+        resultText = result.getText();
+        //verify result is keeping 20
+        Assert.assertEquals(resultText,"20");
+
 
 
         //close the app at the end
