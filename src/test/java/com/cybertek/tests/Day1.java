@@ -70,6 +70,7 @@ public class Day1 {
         MobileElement digit4 = driver.findElement(By.id("com.android.calculator2:id/digit_4"));
         MobileElement digit5 = driver.findElement(By.id("com.android.calculator2:id/digit_5"));
         MobileElement multipy = driver.findElementByAccessibilityId("multiply");
+        MobileElement minus = driver.findElementByAccessibilityId("minus");
 
         digit4.click();
         multipy.click();
@@ -80,10 +81,29 @@ public class Day1 {
         //verify result is keeping 20
         Assert.assertEquals(resultText,"20");
 
+        //50-35 = 15
+        getDigit(5).click();
+        getDigit(0).click();
+        minus.click();
+        getDigit(3).click();
+        getDigit(5).click();
+        equals.click();
+
+        resultText = result.getText();
+        //verify result is keeping 20
+        Assert.assertEquals(resultText,"15");
+
+
 
 
         //close the app at the end
         driver.closeApp();
+    }
+
+    //CREATE A METHOD NAMED getDigit THAT IS RETURNING MOBILE ELEMENT OF THE DIGIT THAT YOU PASS AS A PARAMETER
+
+    public MobileElement getDigit(int digit){
+        return driver.findElement(By.id("com.android.calculator2:id/digit_"+digit));
     }
 
 }
