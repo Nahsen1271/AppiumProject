@@ -98,7 +98,7 @@ public class Day1 {
     }
 
     @Test
-    public void test2(){
+    public void test2() throws MalformedURLException, InterruptedException {
 
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 
@@ -106,13 +106,16 @@ public class Day1 {
         desiredCapabilities.setCapability(MobileCapabilityType.VERSION,"8.0");
         desiredCapabilities.setCapability(MobileCapabilityType.DEVICE_NAME,"Pixel_2");
         desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME,"UiAutomator2");
+        //to specfiy app for testing
+        //it can be on your computer or somewhere in cloud
+        desiredCapabilities.setCapability("app","https://cybertek-appium.s3.amazonaws.com/etsy.apk");
+        driver = new AppiumDriver<>(new URL("http://localhost:4723/wd/hub"),desiredCapabilities);
+
+        Thread.sleep(5000);
 
 
 
-
-
-
-
+        driver.closeApp();
 
     }
 
