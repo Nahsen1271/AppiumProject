@@ -93,12 +93,32 @@ public class Day1 {
         //verify result is keeping 20
         Assert.assertEquals(resultText,"15");
 
-
-
-
         //close the app at the end
         driver.closeApp();
     }
+
+    @Test
+    public void test2(){
+
+        DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+
+        desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, Platform.ANDROID);
+        desiredCapabilities.setCapability(MobileCapabilityType.VERSION,"8.0");
+        desiredCapabilities.setCapability(MobileCapabilityType.DEVICE_NAME,"Pixel_2");
+        desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME,"UiAutomator2");
+
+
+
+
+
+
+
+
+    }
+
+
+
+
 
     //CREATE A METHOD NAMED getDigit THAT IS RETURNING MOBILE ELEMENT OF THE DIGIT THAT YOU PASS AS A PARAMETER
 
