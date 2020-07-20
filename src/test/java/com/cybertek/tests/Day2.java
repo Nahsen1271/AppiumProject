@@ -22,14 +22,17 @@ public class Day2 {
 
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 
-        desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, Platform.ANDROID);
-        desiredCapabilities.setCapability(MobileCapabilityType.VERSION,"8.0");
-        desiredCapabilities.setCapability(MobileCapabilityType.DEVICE_NAME,"Pixel_2");
+        desiredCapabilities.setCapability("appiumVersion", "1.17.1");
+        desiredCapabilities.setCapability("deviceName","Samsung Galaxy S8 FHD GoogleAPI Emulator");
+        desiredCapabilities.setCapability("deviceOrientation", "portrait");
+        desiredCapabilities.setCapability("browserName", "");
+        desiredCapabilities.setCapability("platformVersion","8.0");
+        desiredCapabilities.setCapability("platformName","Android");
         desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME,"UiAutomator2");
         //to specfiy app for testing
         //it can be on your computer or somewhere in cloud
         desiredCapabilities.setCapability("app","https://cybertek-appium.s3.amazonaws.com/etsy.apk");
-        driver = new AppiumDriver<>(new URL("http://localhost:4723/wd/hub"),desiredCapabilities);
+        driver = new AppiumDriver<>(new URL("https://jamaldemir:eeb12eac-37ce-4d1c-a0f1-501e2583b1be@ondemand.us-west-1.saucelabs.com:443/wd/hub"),desiredCapabilities);
 
         Thread.sleep(5000);
 
