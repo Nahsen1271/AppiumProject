@@ -34,19 +34,19 @@ public class Day2 {
         desiredCapabilities.setCapability("app","https://cybertek-appium.s3.amazonaws.com/etsy.apk");
         driver = new AppiumDriver<>(new URL("https://jamaldemir:eeb12eac-37ce-4d1c-a0f1-501e2583b1be@ondemand.us-west-1.saucelabs.com:443/wd/hub"),desiredCapabilities);
 
-        Thread.sleep(5000);
+        Thread.sleep(1000);
 
         MobileElement you = driver.findElement(MobileBy.AccessibilityId("You tab, 4 of 5"));
         you.click();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
         MobileElement settings = driver.findElement(By.xpath("//*[@text='Settings']"));
         settings.click();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
         MobileElement checkbox = driver.findElement(By.id("com.etsy.android:id/settings_checkbox"));
         checkbox.click();
-        Thread.sleep(3000);
+        Thread.sleep(1000);
 
         //verify after click the checkbox it is not selected
         Assert.assertFalse(driver.findElement(By.id("com.etsy.android:id/settings_checkbox")).isSelected());
@@ -54,7 +54,30 @@ public class Day2 {
 
 
 
-        driver.closeApp();
+        driver.quit();
+
+    }
+
+    @Test
+    public void SauceLabsTestWithIOS() throws MalformedURLException, InterruptedException {
+
+        DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+
+        desiredCapabilities.setCapability("appiumVersion", "1.17.1");
+        desiredCapabilities.setCapability("deviceName","iPhone XS Simulator");
+        desiredCapabilities.setCapability("deviceOrientation", "portrait");
+        desiredCapabilities.setCapability("platformVersion","13.2");
+        desiredCapabilities.setCapability("platformName", "iOS");
+        desiredCapabilities.setCapability("browserName", "Safari");
+        //to specfiy app for testing
+        //it can be on your computer or somewhere in cloud
+        driver = new AppiumDriver<>(new URL("https://jamaldemir:eeb12eac-37ce-4d1c-a0f1-501e2583b1be@ondemand.us-west-1.saucelabs.com:443/wd/hub"),desiredCapabilities);
+
+        driver.get("https://www.cybertekschool.com");
+
+        Thread.sleep(2000);
+
+        driver.quit();
 
     }
 }
