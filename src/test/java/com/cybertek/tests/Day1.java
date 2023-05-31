@@ -24,9 +24,9 @@ public class Day1 {
         //we use android phone
         desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, Platform.ANDROID);
         //version of android
-        desiredCapabilities.setCapability(MobileCapabilityType.VERSION,"8.0");
+        desiredCapabilities.setCapability(MobileCapabilityType.VERSION,"12.0");
         //name of the device, if it is real device we need to pass UUID parameter
-        desiredCapabilities.setCapability(MobileCapabilityType.DEVICE_NAME,"Pixel_2");
+        desiredCapabilities.setCapability(MobileCapabilityType.DEVICE_NAME,"Pixel_2_BT3");
 
         //either you specify app--> //path/to/app.apk
         //or if app is already installed, you need to specify appActivity and appPackage
@@ -141,9 +141,9 @@ public class Day1 {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 
         desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, Platform.ANDROID);
-        desiredCapabilities.setCapability(MobileCapabilityType.VERSION,"9.0");
+        desiredCapabilities.setCapability(MobileCapabilityType.VERSION,"5.0.2");
         //we used real device, i get this UUID number from terminal with typing "adb devices"
-        desiredCapabilities.setCapability(MobileCapabilityType.DEVICE_NAME,"9887fc474f4f315a43");
+        desiredCapabilities.setCapability(MobileCapabilityType.DEVICE_NAME,"HT44AW9A0193");
         desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME,"UiAutomator2");
         //to specfiy app for testing
         //it can be on your computer or somewhere in cloud
@@ -173,12 +173,6 @@ public class Day1 {
         driver.closeApp();
 
     }
-
-
-
-
-
-
 
     //CREATE A METHOD NAMED getDigit THAT IS RETURNING MOBILE ELEMENT OF THE DIGIT THAT YOU PASS AS A PARAMETER
 

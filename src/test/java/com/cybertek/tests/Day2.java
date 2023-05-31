@@ -35,7 +35,7 @@ public class Day2 {
         //to specfiy app for testing
         //it can be on your computer or somewhere in cloud
         desiredCapabilities.setCapability("app","https://cybertek-appium.s3.amazonaws.com/etsy.apk");
-        driver = new AppiumDriver<>(new URL("https://jamaldemir:eeb12eac-37ce-4d1c-a0f1-501e2583b1be@ondemand.us-west-1.saucelabs.com:443/wd/hub"),desiredCapabilities);
+        driver = new AppiumDriver<>(new URL("https://Nahsen1271:2bbc967d-be9d-41ef-8e18-2f94aa657011@ondemand.apac-southeast-1.saucelabs.com:443/wd/hub"),desiredCapabilities);
 
         Thread.sleep(1000);
 
@@ -74,7 +74,7 @@ public class Day2 {
         desiredCapabilities.setCapability("browserName", "Safari");
         //to specfiy app for testing
         //it can be on your computer or somewhere in cloud
-        driver = new AppiumDriver<>(new URL("https://jamaldemir:eeb12eac-37ce-4d1c-a0f1-501e2583b1be@ondemand.us-west-1.saucelabs.com:443/wd/hub"),desiredCapabilities);
+        driver = new AppiumDriver<>(new URL("https://Nahsen1271:2bbc967d-be9d-41ef-8e18-2f94aa657011@ondemand.apac-southeast-1.saucelabs.com:443/wd/hub"),desiredCapabilities);
 
         driver.get("https://www.cybertekschool.com");
 
@@ -84,11 +84,35 @@ public class Day2 {
 
     }
 
-    public static String userName = "jamaldemir1";
-    public static String accessKey = "acGNvfAzG1UajypsjzyS";
+    public static String userName = "nahsenfistikci_C0yghW";
+    public static String accessKey = "XViKwM7FyVXE5YVWDbaP";
 
     @Test
     public void BrowserStackTest() throws MalformedURLException, InterruptedException {
+        DesiredCapabilities caps = new DesiredCapabilities();
+
+        caps.setCapability("device", "Google Pixel 3");
+        caps.setCapability("os_version", "9.0");
+        caps.setCapability("project", "My First Project");
+        caps.setCapability("build", "My First Build");
+        caps.setCapability("name", "Bstack-[Java] Sample Test");
+        caps.setCapability(MobileCapabilityType.BROWSER_NAME, BrowserType.CHROME);
+        caps.setCapability(MobileCapabilityType.AUTOMATION_NAME,"UiAutomator2");
+        driver = new AndroidDriver<MobileElement>(new URL("https://"+userName+":"+accessKey+"@hub-cloud.browserstack.com/wd/hub"), caps);
+
+        driver.get("https://qa3.vytrack.com");
+
+        driver.findElement(By.id("prependedInput")).sendKeys("storemanager85");
+        driver.findElement(By.id("prependedInput2")).sendKeys("UserUser123", Keys.ENTER);
+
+        Thread.sleep(3000);
+
+
+        driver.quit();
+
+    }
+    @Test
+    public void BrowserStackTest1() throws MalformedURLException, InterruptedException {
         DesiredCapabilities caps = new DesiredCapabilities();
 
         caps.setCapability("device", "Samsung Galaxy S10e");
