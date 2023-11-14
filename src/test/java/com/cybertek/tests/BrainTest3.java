@@ -16,17 +16,22 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+
+import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static io.appium.java_client.touch.WaitOptions.waitOptions;
 import static io.appium.java_client.touch.offset.PointOption.point;
@@ -60,11 +65,10 @@ public class BrainTest3 {
         System.out.println("Testte başlandı");
         Thread.sleep(1000);
         letsGoButton().click(); Thread.sleep(2000);
-        yesButton().click();Thread.sleep(2000);
-       SettingsButton().click();Thread.sleep(2000);
+        yesButton().click();Thread.sleep(3000);
+        SettingsButton().click();Thread.sleep(2000);
         System.out.println("Setting Testtine başlandı");
         LanguageSelectButton().click();
-
         selectAlanguage("DE").click();Thread.sleep(1000);
         LanguageSelectButton().click();Thread.sleep(1000);
         selectAlanguage("RU").click();Thread.sleep(1000);
@@ -74,8 +78,11 @@ public class BrainTest3 {
         String musicText = musicText().getText();
         String notificationText = notificationText().getText();
         Assert.assertEquals("SOUND", soundText);
+        System.out.println("SOUND assert edildi.");
         Assert.assertEquals("MUSIC", musicText);
+        System.out.println("MUSIC assert edildi.");
         Assert.assertEquals("NOTIFICATION", notificationText);
+        System.out.println("NOTIFICATION assert edildi.");
         soundOffButton().click(); Thread.sleep(1000);
         soundOnButton().click(); Thread.sleep(1000);
         musicOffButton().click(); Thread.sleep(1000);
@@ -83,11 +90,7 @@ public class BrainTest3 {
         notificationOffButton().click(); Thread.sleep(1000);
         notificationOnButton().click(); Thread.sleep(1000);
         tryOurOtherGames().click();Thread.sleep(3000);
-     //   zenLifePB().tap(); Thread.sleep(3000);appiumDriver.navigate().back();Thread.sleep(3000);
-     //   brainTestPB().tap(); Thread.sleep(3000);appiumDriver.navigate().back();Thread.sleep(3000);
-     //   whoIsPB().tap(); Thread.sleep(3000);appiumDriver.navigate().back();Thread.sleep(3000);
         backButtonForOtherGames().click(); Thread.sleep(3000);
-     //   support().click(); Thread.sleep(3000);appiumDriver.navigate().back();Thread.sleep(3000);
         shareButton().click(); Thread.sleep(2000);appiumDriver.navigate().back();Thread.sleep(3000);
         twitterButton().click(); Thread.sleep(2000);appiumDriver.navigate().back();Thread.sleep(3000);
         instagramButton().click(); Thread.sleep(2000);appiumDriver.navigate().back();Thread.sleep(3000);
@@ -96,13 +99,58 @@ public class BrainTest3 {
         TermsOfUse().click(); Thread.sleep(2000);appiumDriver.navigate().back();Thread.sleep(3000);
         backButton().click(); Thread.sleep(1000);
         System.out.println("MainPage'deyiz.");
-        tapToPlayButton().click();Thread.sleep(1000);
+        shopButtonOnMainPage().click();Thread.sleep(3000);
+        removeAdsShopPriceButton().click(); Thread.sleep(3000);appiumDriver.navigate().back();Thread.sleep(3000);
+        bulbsPack2000().click(); Thread.sleep(3000);appiumDriver.navigate().back();Thread.sleep(3000);
+        adventurePack().click(); Thread.sleep(3000);appiumDriver.navigate().back();Thread.sleep(3000);
+        magicPack().click(); Thread.sleep(3000);appiumDriver.navigate().back();Thread.sleep(3000);
+        bulbsPack100().click(); Thread.sleep(3000);appiumDriver.navigate().back();Thread.sleep(3000);
+        bulbsPack250().click(); Thread.sleep(3000);appiumDriver.navigate().back();Thread.sleep(3000);
+        bulbsPack500().click(); Thread.sleep(3000);appiumDriver.navigate().back();Thread.sleep(3000);
+        backButton().click(); Thread.sleep(1000);
+        closeShopReturnAd().click(); Thread.sleep(1000);
+        System.out.println("Yeni'den MainPage'deyiz.");
+        tapToPlayButton().click();Thread.sleep(10000);
         System.out.println("Level_1'deyiz...");
+        takeScreenShot("LevelBir");Thread.sleep(7000);
+        rewardedButton().click();Thread.sleep(20000);
+        //((TakesScreenshot) appiumDriver).getScreenshotAs(OutputType.BYTES);
+        takeScreenShot("gamePageRw");Thread.sleep(20000);
+        appiumDriver.runAppInBackground(Duration.ofSeconds(1));
+        appiumDriver.activateApp("com.unicostudio.braintest3");Thread.sleep(5000);
+        shopButtonOnMainPage().click();Thread.sleep(1000);
+        takeScreenShot("Shop");Thread.sleep(7000);
+        bulbsPack50().click();Thread.sleep(20000);
+        //((TakesScreenshot) appiumDriver).getScreenshotAs(OutputType.BYTES);
+        takeScreenShot("shopRw");Thread.sleep(20000);
+        appiumDriver.runAppInBackground(Duration.ofSeconds(1));
+        appiumDriver.activateApp("com.unicostudio.braintest3");Thread.sleep(5000);
+        backButton().click(); Thread.sleep(1000);
+        takeScreenShot("ShopReturnPopup");Thread.sleep(7000);
+        watchShopReturnRw().click(); Thread.sleep(20000);
+        takeScreenShot("shopReturnRw");Thread.sleep(20000);
+        appiumDriver.runAppInBackground(Duration.ofSeconds(1));
+        appiumDriver.activateApp("com.unicostudio.braintest3");Thread.sleep(5000);
+        /*tapByCoordinates(100,1000);Thread.sleep(20000); // Banner Kontrol
+        takeScreenShot();Thread.sleep(20000);
+        appiumDriver.runAppInBackground(Duration.ofSeconds(1));
+        appiumDriver.activateApp("com.unicostudio.braintest3");Thread.sleep(5000);*/
         gundolf().click();
         swipeMethod(gundolf(),alyxKickPoint()); Thread.sleep(3000);
         claimDailyButton().click(); Thread.sleep(5000);
         claimButton().click(); Thread.sleep(5000);
+        watchEndGameRw().click();  Thread.sleep(20000);
+        //((TakesScreenshot) appiumDriver).getScreenshotAs(OutputType.BYTES);
+        takeScreenShot("LevelEnd");Thread.sleep(7000);
+        takeScreenShot("levelEndRw");Thread.sleep(20000);
+
+        appiumDriver.runAppInBackground(Duration.ofSeconds(1));
+        appiumDriver.activateApp("com.unicostudio.braintest3");Thread.sleep(5000);
         nextButton().click(); Thread.sleep(5000);
+        AppiumPerformanceMetrics();Thread.sleep(15000);
+        System.out.println("Test Başarılı bir şekilde bitti");Thread.sleep(3000);
+        appiumDriver.closeApp();
+
         System.out.println("Level_2'deyiz...");
         swipeMethod(alyx(),alyxDragLimit());Thread.sleep(5000);
         swipeMethod(barrelWithAlyx(),trolley());Thread.sleep(5000);
@@ -110,7 +158,7 @@ public class BrainTest3 {
         System.out.println("Level_3'deyiz...");
         hintButton().click();Thread.sleep(3000);
         hint0Locked().click();Thread.sleep(13000);
-        tapByCoordinates(100,100);
+        tapByCoordinates(340,1312);
         helpButton().click();Thread.sleep(13000);
         nextButton().click(); Thread.sleep(5000);
         System.out.println("Rate_Us'dayız...");
@@ -118,9 +166,9 @@ public class BrainTest3 {
         submitButton().click(); Thread.sleep(5000);
         missThisChance().click(); Thread.sleep(3000);
         System.out.println("Level4'deyiz...");
-       /* swipeMethod(bustDraggable(),bustplatforn()); Thread.sleep(7000);
-        System.out.println("Bust Platforma yerleşti");
-        swipeMethod(platformStrecher(),strRefPoint()); Thread.sleep(5000);*/
+       // swipeMethod(bustDraggable(),bustplatforn()); Thread.sleep(7000);
+       // System.out.println("Bust Platforma yerleşti");
+       // swipeMethod(platformStrecher(),strRefPoint()); Thread.sleep(5000);
         hintButton().click();Thread.sleep(3000);
         hint0Locked().click();Thread.sleep(3000);
         hint1Locked().click();Thread.sleep(3000);
@@ -129,27 +177,21 @@ public class BrainTest3 {
         helpButton().click();Thread.sleep(3000);
         System.out.println("Sutünü yukarı aldım");Thread.sleep(5000);
         System.out.println("Continue With Ads");
-        continueWithAds().click(); Thread.sleep(5000);
-        try {
-          //  WebDriverWait wait = new WebDriverWait(appiumDriver, 80);
-         //   MobileElement skipAds= (MobileElement) appiumDriver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View"));
-        //    By.ByXPath elementLocator= (By.ByXPath) By.ByXPath.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View");
-         //   MobileElement skipAds= (MobileElement) wait.until(ExpectedConditions.presenceOfElementLocated(elementLocator));
-         //   skipAds.click();
-            appiumDriver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View")).click();
+        continueWithAds().click(); Thread.sleep(7000);
 
-        }catch (Exception ads){
-            System.out.println("There is no ads");
-        }
-        appiumDriver.closeApp();Thread.sleep(3000);
-        appiumDriver.activateApp("com.unicostudio.braintest3");Thread.sleep(7000);
-        tapToPlayButton().click(); Thread.sleep(3000);
-        swipeMethod(cake(),lvl5_trap()); Thread.sleep(3000);
-        door().tap(); Thread.sleep(11000);
-        appiumDriver.closeApp();Thread.sleep(3000);
-        appiumDriver.activateApp("com.unicostudio.braintest3");Thread.sleep(7000);
-        tapToPlayButton().click(); Thread.sleep(3000);
-
+        appiumDriver.runAppInBackground(Duration.ofSeconds(1));
+        appiumDriver.activateApp("com.unicostudio.braintest3");Thread.sleep(5000);
+        nextButton().click(); Thread.sleep(5000);
+        skipButton().click(); Thread.sleep(5000);
+        System.out.println("Level5'deyiz...");
+        swipeMethod(lvl5_trap(),cake()); Thread.sleep(3000);
+        door().tap(); Thread.sleep(21000);
+        appiumDriver.runAppInBackground(Duration.ofSeconds(1));
+        appiumDriver.activateApp("com.unicostudio.braintest3");Thread.sleep(5000);
+        nextButton().click(); Thread.sleep(5000);
+        rewardedButton().click();Thread.sleep(4500);
+        appiumDriver.runAppInBackground(Duration.ofSeconds(1));
+        appiumDriver.activateApp("com.unicostudio.braintest3");Thread.sleep(5000);
 
 
 
@@ -167,6 +209,116 @@ public class BrainTest3 {
     new TouchAction(appiumDriver)
                 .tap(point(x,y))
                 .waitAction(waitOptions(ofMillis(250))).perform();
+    }
+
+    public void takeScreenShot(String rewardedName){
+        String date = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+        String screenshotFilePath = System.getProperty("user.dir") + File.separator + "test_output" + File.separator +"screenshots" + File.separator +date+"_"+ rewardedName +".png";
+        try {
+            FileOutputStream outputStream = new FileOutputStream(screenshotFilePath);
+            byte[] screenshot = ((TakesScreenshot) appiumDriver).getScreenshotAs(OutputType.BYTES);
+            outputStream.write(screenshot);
+            outputStream.close();
+            System.out.println("Ekran görüntüsü kaydedildi: " + screenshotFilePath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    /*public static void AppiumPerformanceMetrics1 () {
+        // Specify your device serial number or leave it empty for the default device
+        String deviceSerial = "";
+        // Define the package name of the app you want to test
+        String packageName = "com.unicostudio.braintest3";
+        // Execute "adb shell dumpsys cpuinfo" command to capture CPU usage
+        String cpuInfoCommand = "adb" + (deviceSerial.isEmpty() ? "" : " -s " + deviceSerial) +
+                " shell dumpsys cpuinfo | grep " + packageName;
+        // Execute "adb shell dumpsys meminfo" command to capture memory consumption
+        String memInfoCommand = "adb" + (deviceSerial.isEmpty() ? "" : " -s " + deviceSerial) +
+                " shell dumpsys meminfo " + packageName;
+        // Execute "adb shell dumpsys gfxinfo" command to capture frame rate
+        String gfxInfoCommand = "adb" + (deviceSerial.isEmpty() ? "" : " -s " + deviceSerial) +
+                " shell dumpsys gfxinfo " + packageName;
+        try {
+            // Execute the CPU usage command
+            Process cpuProcess = Runtime.getRuntime().exec(cpuInfoCommand);
+            BufferedReader cpuReader = new BufferedReader(new InputStreamReader(cpuProcess.getInputStream()));
+            String cpuLine;
+            while ((cpuLine = cpuReader.readLine()) != null) {
+                // Process and print CPU usage information here
+                System.out.println("*************************************  CPU DEĞERİ **********************************");
+                System.out.println(cpuLine);
+                String date = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+                String performansFilePath = System.getProperty("user.dir") + File.separator + "test_output" + File.separator +"log" + File.separator + "Performans_"+date+ ".log";
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(performansFilePath))) {
+                    savePerformanceData(writer, "adb shell dumpsys cpuinfo | grep " + packageName, "*************************************  CPU DEĞERİ **********************************");
+                    savePerformanceData(writer, "adb shell dumpsys meminfo " + packageName, "*************************************  MEM INFO **********************************");
+                    savePerformanceData(writer, "adb shell dumpsys gfxinfo " + packageName, "*************************************  GFX INFO **********************************");
+                    System.out.println("Performans kaydedildi: " + performansFilePath);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                private static void savePerformanceData(BufferedWriter writer, String command, String header) throws IOException {
+                    Process process = Runtime.getRuntime().exec(command);
+                    try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
+                        String line;
+                        writer.write(header);
+                        writer.newLine();
+                        while ((line = reader.readLine()) != null) {
+                            writer.write(line);
+                            writer.newLine();
+                        }
+                    }
+                }
+            }
+            // Execute the memory consumption command
+            Process memProcess = Runtime.getRuntime().exec(memInfoCommand);
+            BufferedReader memReader = new BufferedReader(new InputStreamReader(memProcess.getInputStream()));
+            String memLine;
+            while ((memLine = memReader.readLine()) != null) {
+                // Process and print memory consumption information here
+                System.out.println("*************************************  MEMORY DEĞERLERİ **********************************");
+                System.out.println(memLine);
+            }
+            // Execute the frame rate command
+            Process gfxProcess = Runtime.getRuntime().exec(gfxInfoCommand);
+            BufferedReader gfxReader = new BufferedReader(new InputStreamReader(gfxProcess.getInputStream()));
+            String gfxLine;
+            while ((gfxLine = gfxReader.readLine()) != null) {
+                // Process and print frame rate information here
+                System.out.println("*************************************  FPS DEĞERLERİ **********************************");
+                System.out.println(gfxLine);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }*/
+    public static void AppiumPerformanceMetrics () {
+        // Specify your device serial number or leave it empty for the default device
+        String deviceSerial = "";
+        // Define the package name of the app you want to test
+        String packageName = "com.unicostudio.braintest3";
+        String date = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+        String performansFilePath = System.getProperty("user.dir") + File.separator + "test_output" + File.separator + "log" + File.separator + "Performans_" + date + ".log";
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(performansFilePath))) {
+            savePerformanceData(writer, "adb shell dumpsys cpuinfo | grep " + packageName, "*************************************  CPU DEĞERİ **********************************");
+            savePerformanceData(writer, "adb shell dumpsys meminfo " + packageName, "*************************************  MEM INFO **********************************");
+            savePerformanceData(writer, "adb shell dumpsys gfxinfo " + packageName, "*************************************  GFX INFO **********************************");
+            System.out.println("Performans kaydedildi: " + performansFilePath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private static void savePerformanceData(BufferedWriter writer, String command, String header) throws IOException {
+        Process process = Runtime.getRuntime().exec(command);
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
+            String line;
+            writer.write(header);
+            writer.newLine();
+            while ((line = reader.readLine()) != null) {
+                writer.write(line);
+                writer.newLine();
+            }
+        }
     }
     public AltObject firstSkipButton(){
         AltFindObjectsParams par=new AltFindObjectsParams.Builder(AltDriver.By.NAME, "SkipButton").
@@ -365,6 +517,80 @@ public class BrainTest3 {
         AltWaitForObjectsParams params = new AltWaitForObjectsParams.Builder(par).withTimeout(9).build();
         return altDriver.waitForObject(params);//
     }
+        // SHOP
+        public AltObject shopButtonOnMainPage(){
+            AltFindObjectsParams par=new AltFindObjectsParams.Builder(AltDriver.By.NAME, "CoinsPanel").
+                    isEnabled(true).build();
+            AltWaitForObjectsParams params = new AltWaitForObjectsParams.Builder(par).withTimeout(9).build();
+            return altDriver.waitForObject(params);//
+        }
+
+    public AltObject removeAdsShopPriceButton(){
+        AltFindObjectsParams par=new AltFindObjectsParams.Builder(AltDriver.By.NAME, "RemoveAds").
+                isEnabled(true).build();
+        AltWaitForObjectsParams params = new AltWaitForObjectsParams.Builder(par).withTimeout(9).build();
+        return altDriver.waitForObject(params);//
+    }
+    public AltObject bulbsPack2000(){
+        AltFindObjectsParams par=new AltFindObjectsParams.Builder(AltDriver.By.NAME, "2000bulbs_pack10").
+                isEnabled(true).build();
+        AltWaitForObjectsParams params = new AltWaitForObjectsParams.Builder(par).withTimeout(9).build();
+        return altDriver.waitForObject(params);//
+    }
+    public AltObject adventurePack(){
+        AltFindObjectsParams par=new AltFindObjectsParams.Builder(AltDriver.By.NAME, "Adventure-Pack8").
+                isEnabled(true).build();
+        AltWaitForObjectsParams params = new AltWaitForObjectsParams.Builder(par).withTimeout(9).build();
+        return altDriver.waitForObject(params);//
+    }
+    public AltObject magicPack(){
+        AltFindObjectsParams par=new AltFindObjectsParams.Builder(AltDriver.By.NAME, "Magic-Pack9").
+                isEnabled(true).build();
+        AltWaitForObjectsParams params = new AltWaitForObjectsParams.Builder(par).withTimeout(9).build();
+        return altDriver.waitForObject(params);// 50bulbs-Free
+    }
+    public AltObject bulbsPack50(){
+        AltFindObjectsParams par=new AltFindObjectsParams.Builder(AltDriver.By.NAME, "50bulbs-Free").
+                isEnabled(true).build();
+        AltWaitForObjectsParams params = new AltWaitForObjectsParams.Builder(par).withTimeout(9).build();
+        return altDriver.waitForObject(params);// Button
+    }
+    public AltObject watchShopReturnRw(){
+        AltFindObjectsParams par=new AltFindObjectsParams.Builder(AltDriver.By.NAME, "Button").
+                isEnabled(true).build();
+        AltWaitForObjectsParams params = new AltWaitForObjectsParams.Builder(par).withTimeout(9).build();
+        return altDriver.waitForObject(params);//buttonRewarded
+    }
+    public AltObject watchEndGameRw(){
+        AltFindObjectsParams par=new AltFindObjectsParams.Builder(AltDriver.By.NAME, "buttonRewarded").
+                isEnabled(true).build();
+        AltWaitForObjectsParams params = new AltWaitForObjectsParams.Builder(par).withTimeout(9).build();
+        return altDriver.waitForObject(params);//buttonRewarded
+    }
+    public AltObject bulbsPack100(){
+        AltFindObjectsParams par=new AltFindObjectsParams.Builder(AltDriver.By.NAME, "100bulbs-pack1").
+                isEnabled(true).build();
+        AltWaitForObjectsParams params = new AltWaitForObjectsParams.Builder(par).withTimeout(9).build();
+        return altDriver.waitForObject(params);
+    }
+    public AltObject bulbsPack250(){
+        AltFindObjectsParams par=new AltFindObjectsParams.Builder(AltDriver.By.NAME, "250bulbs-pack2").
+                isEnabled(true).build();
+        AltWaitForObjectsParams params = new AltWaitForObjectsParams.Builder(par).withTimeout(9).build();
+        return altDriver.waitForObject(params);//500bulbs-pack3
+    }
+    public AltObject bulbsPack500(){
+        AltFindObjectsParams par=new AltFindObjectsParams.Builder(AltDriver.By.NAME, "500bulbs-pack3").
+                isEnabled(true).build();
+        AltWaitForObjectsParams params = new AltWaitForObjectsParams.Builder(par).withTimeout(9).build();
+        return altDriver.waitForObject(params);//500bulbs-pack3
+    }
+    public AltObject closeShopReturnAd(){
+        AltFindObjectsParams par=new AltFindObjectsParams.Builder(AltDriver.By.PATH, "/CanvasUI/PopupRewarded/Bg/Pop/CloseButton").
+                isEnabled(true).build();
+        AltWaitForObjectsParams params = new AltWaitForObjectsParams.Builder(par).withTimeout(9).build();
+        return altDriver.waitForObject(params);//500bulbs-pack3
+    }
         // LEVEL_1
     public AltObject tapToPlayButton(){
         AltFindObjectsParams par=new AltFindObjectsParams.Builder(AltDriver.By.PATH, "/Canvas/BottomMenu/TapToPlay").
@@ -536,9 +762,29 @@ public class BrainTest3 {
         AltFindObjectsParams par=new AltFindObjectsParams.Builder(AltDriver.By.PATH, "/Canvas/Level/Mask/bg/stone").
                 isEnabled(true).build();
         AltWaitForObjectsParams params = new AltWaitForObjectsParams.Builder(par).withTimeout(9).build();
-        return altDriver.waitForObject(params);
-    }    public AltObject alyxImage(){
+        return altDriver.waitForObject(params); ///Canvas/Level/Mask/DragParent/stone2
+    }
+    public AltObject slingwrock(){
+    AltFindObjectsParams par=new AltFindObjectsParams.Builder(AltDriver.By.PATH, "/Canvas/Level/Mask/lvl4_slingwrock").
+            isEnabled(true).build();
+    AltWaitForObjectsParams params = new AltWaitForObjectsParams.Builder(par).withTimeout(9).build();
+    return altDriver.waitForObject(params);
+}
+
+    public AltObject alyxImage(){
         AltFindObjectsParams par=new AltFindObjectsParams.Builder(AltDriver.By.PATH, "/Canvas/Level/Mask/alyx/alyxImage").
+                isEnabled(true).build();
+        AltWaitForObjectsParams params = new AltWaitForObjectsParams.Builder(par).withTimeout(9).build();
+        return altDriver.waitForObject(params);
+    }
+    public AltObject stone2(){
+    AltFindObjectsParams par=new AltFindObjectsParams.Builder(AltDriver.By.PATH, "/Canvas/Level/Mask/DragParent/stone2").
+            isEnabled(true).build();
+    AltWaitForObjectsParams params = new AltWaitForObjectsParams.Builder(par).withTimeout(9).build();
+    return altDriver.waitForObject(params); //Canvas/Level/Mask/alyx/GameObject
+}
+    public AltObject sling2(){
+        AltFindObjectsParams par=new AltFindObjectsParams.Builder(AltDriver.By.PATH, "/Canvas/Level/Mask/alyx/GameObject").
                 isEnabled(true).build();
         AltWaitForObjectsParams params = new AltWaitForObjectsParams.Builder(par).withTimeout(9).build();
         return altDriver.waitForObject(params);
@@ -550,11 +796,17 @@ public class BrainTest3 {
         AltWaitForObjectsParams params = new AltWaitForObjectsParams.Builder(par).withTimeout(9).build();
         return altDriver.waitForObject(params);
     }
-    public AltObject spinWheelSkipButton(){
-        AltFindObjectsParams par=new AltFindObjectsParams.Builder(AltDriver.By.PATH, "/Canvas/UI/SkipButton").
+    public AltObject skipButton(){
+        AltFindObjectsParams par=new AltFindObjectsParams.Builder(AltDriver.By.NAME, "SkipButton").
                 isEnabled(true).build();
         AltWaitForObjectsParams params = new AltWaitForObjectsParams.Builder(par).withTimeout(9).build();
-        return altDriver.waitForObject(params);
+        return altDriver.waitForObject(params);// RewardedButton
+    }
+    public AltObject rewardedButton(){
+        AltFindObjectsParams par=new AltFindObjectsParams.Builder(AltDriver.By.NAME, "RewardedButton").
+                isEnabled(true).build();
+        AltWaitForObjectsParams params = new AltWaitForObjectsParams.Builder(par).withTimeout(9).build();
+        return altDriver.waitForObject(params);// RewardedButton
     }
     //LEVEL_9
 
